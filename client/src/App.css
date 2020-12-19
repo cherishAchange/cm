@@ -1,0 +1,32 @@
+html, body, #root {
+  height: 100%;
+}
+
+.App {
+  height: 100%;
+  width: 100%;
+  padding: 0 15px;
+  display: flex;
+}
+
+.user-list {
+  width: 200px;
+  border-right: 1px solid red;
+}
+
+.video-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.remote-box, .local-box {
+  flex: 1;
+  overflow: auto;
+  border-bottom: 1px solid red;
+}
+
+#received_video, #local_video {
+  height: 300px;
+  width: 300px;
+}
