@@ -193,7 +193,7 @@ class App extends React.Component {
     });
   }
 
-  connetListen() {
+  connetListen = () => {
     this.socket = IO();
     this.socket.on('people-join', (data) => {
       message.info(data.message);
@@ -237,22 +237,22 @@ class App extends React.Component {
 
     const desc = new RTCSessionDescription(msg.sdp);
 
-    this.myPeerConnection.setRemoteDescription(desc).then(function () {
+    this.myPeerConnection.setRemoteDescription(desc).then(() => {
       return navigator.mediaDevices.getUserMedia(mediaConstraints);
     })
-      .then(function (stream) {
+      .then((stream) => {
         localStream = stream;
         document.getElementById("local_video").srcObject = localStream;
 
         localStream.getTracks().forEach(track => this.myPeerConnection.addTrack(track, localStream));
       })
-      .then(function () {
+      .then(() => {
         return this.myPeerConnection.createAnswer();
       })
-      .then(function (answer) {
+      .then((answer) => {
         return this.myPeerConnection.setLocalDescription(answer);
       })
-      .then(function () {
+      .then(() => {
         this.socket.emit('video-answer', {
           type: 'video-answer',
           name: this.state.own,
@@ -275,8 +275,9 @@ class App extends React.Component {
       message.warn('跟自己连啥呀');
       return;
     }
-    this.setState({ target: name });
-    this.invite();
+    this.setState({ target: name }, () => {
+      this.invite();
+    });
   }
 
   render() {
