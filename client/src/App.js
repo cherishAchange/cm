@@ -107,7 +107,7 @@ class App extends React.Component {
     this.myPeerConnection = new RTCPeerConnection({
       iceServers: [     // Information about ICE servers - Use your own!
         {
-          urls: "stun://192.168.2.101:8080"
+          urls: "stun://www.tlfaner.cn"
         }
       ]
     });
